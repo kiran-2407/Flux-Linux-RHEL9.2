@@ -4,7 +4,7 @@ metadata:
   name: nginx
   namespace: flux-system
 spec:
-  interval: 5m
+  interval: 1m
   path: ./clusters/minikube/apps/nginx
   prune: true
   sourceRef:
