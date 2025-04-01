@@ -1,12 +1,32 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: nginx
+  name: flux-system
   namespace: flux-system
 spec:
   interval: 1m
-  path: ./clusters/minikube/apps/nginx
+  path: clusters/minikube/flux-system  # ✅ Remove `./`
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
+    namespace: flux-system
+  wait: true
+  timeout: 2m
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: kustomize-controller
+      namespace: flux-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: source-controller
+      namespace: flux-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: notification-controller
+      namespace: flux-system
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: helm-controller
+      namespace: flux-system
