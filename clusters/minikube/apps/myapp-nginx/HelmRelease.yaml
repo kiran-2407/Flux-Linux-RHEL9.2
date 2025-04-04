@@ -2,11 +2,11 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: myapp-nginx
+  name: myapp-nginx-Helm
   namespace: default
 spec:
   interval: 1m
-  releaseName: myapp-nginx
+  releaseName: myapp-nginx-Helm
   chart:
     spec:
       chart: nginx
