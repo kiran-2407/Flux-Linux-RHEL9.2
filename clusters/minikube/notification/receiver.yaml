@@ -1,0 +1,18 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Receiver
+metadata:
+  name: slack-receiver
+  namespace: flux-system
+spec:
+  type: slack
+  events:
+    - push
+    - pull-request
+    - commit
+    - reconciliation
+  secretRef:
+    name: slack-url
+  resources:
+    - kind: GitRepository
+    - kind: Kustomization
+    - kind: HelmRelease
