@@ -1,7 +1,8 @@
+# image-automation.yaml
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
-  name: myapp-update
+  name: nginx-auto
   namespace: flux-system
 spec:
   interval: 1m0s
@@ -14,12 +15,10 @@ spec:
         branch: main
     commit:
       author:
-        email: bot@users.noreply.github.com
         name: flux-bot
-      messageTemplate: |
-        auto update image to {{range .Updated.Images}}{{.NewTag}}{{end}}
+        email: flux@example.com
+      messageTemplate: "Update image to {{ .NewImage }}"
     push:
       branch: main
   update:
-    path: ./clusters/minikube/apps/nginx
     strategy: Setters
