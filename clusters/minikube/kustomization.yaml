@@ -1,0 +1,4 @@
+resources:
+  - apps/
+  - flux-system/
+  - notification/
