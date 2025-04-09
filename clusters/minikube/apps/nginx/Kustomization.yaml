@@ -5,3 +5,7 @@ metadata:
 resources:
   - deployment.yaml
   - service.yaml
+images:
+  - name: bitnami/nginx
+    newName: bitnami/nginx
+    newTag: 1.25.0  # this gets updated by ImageAutomation

@@ -1,0 +1,20 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: myapp-nginx-helm       # 🔁 NEW NAME
+  namespace: default
+spec:
+  releaseName: myapp-nginx-helm   # 🔁 IMPORTANT: Also change the Helm release name
+  interval: 5m
+  chart:
+    spec:
+      chart: nginx
+      version: "15.3.1"
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+  values:
+    replicaCount: 2
+    service:
+      type: LoadBalancer

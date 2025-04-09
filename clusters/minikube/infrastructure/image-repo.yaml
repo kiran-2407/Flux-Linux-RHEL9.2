@@ -1,0 +1,9 @@
+# image-repo.yaml
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: nginx
+  namespace: flux-system
+spec:
+  image: bitnami/nginx
+  interval: 1m0s
