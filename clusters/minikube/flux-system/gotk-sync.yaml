@@ -11,7 +11,7 @@ spec:
     branch: main
   secretRef:
     name: flux-system
-  url: ssh://git@github.com/kiran-2407/Flux-Linux-RHEL9.2.git
+  url: ssh://git@github.com/kiran-2407/Flux-Linux-RHEL9.2
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
